@@ -1,0 +1,9 @@
+<launch>
+    <arg name="arm_model"/>
+    <param name="robot_description" textfile="$(find Working-with-3D-robot-modeling-in-ros)/urdf/seven_dof_arm.urdf"/>
+    
+    <node name="joint_states" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
+        <param name="use_gui" value="True"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+    <node name="rviz" pkg="rviz" type="rviz"/>
+</launch>
