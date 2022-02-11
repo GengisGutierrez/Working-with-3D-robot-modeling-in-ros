@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="arm_model">
 
-<!-- Arm model with 7 DOF without trasmission tag to run programs  -->
+<!-- Arm model with 7 DOF without trasmission tag to run programs but it will be added -->
     <material name="red">
         <color rgba="1 0 0 1"/>
     </material>
