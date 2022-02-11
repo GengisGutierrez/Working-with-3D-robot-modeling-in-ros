@@ -198,4 +198,121 @@
             <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="1.0"/>        
         </inertial>
       </link>
+
+      <joint name="wrist_pitch_joint" type="revolute">
+        <parent link="wrist_roll_link"/>
+        <child link="wrist_pitch_link"/>
+        <origin rpy="0 1.570795 0" xyz="0.0 0.0 0.0001"/>
+        <axis xyz="1 0 0"/>
+        <limit effort="300" lower="-1.5953400194" upper="1.98394848567" velocity="1"/>
+        <dynamics damping="50" friction="1"/>
+      </joint>
+
+      <link name="wrist_pitch_link">
+        <visual>
+            <geometry>
+                <box size="0.06 0.04 0.04"/>
+            </geometry>
+            <origin rpy="0 1.570795 0" xyz="0 0 0.04"/>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.06 0.04 0.04"/>
+            </geometry>
+            <origin rpy="0 1.570795 0" xyz="0 0 0.04"/>
+        </collision>
+        <inertial>
+            <mass value="1"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="1.0"/>        
+        </inertial>
+      </link>
+
+      <joint name="gripper_roll_joint" type="revolute">
+        <parent link="wrist_pitch_link"/>
+        <child link="gripper_roll_link"/>
+        <origin rpy="4.712385 -1.570795 0" xyz="0 0 0.080"/>
+        <axis xyz="1 0 0"/>
+        <limit effort="300" lower="-3.14" upper="3.14" velocity="1"/>
+        <dynamics damping="50" friction="1"/>
+      </joint>
+
+      <link name="gripper_roll_link">
+        <visual>
+            <geometry>
+                <cylinder length="0.02" radius="0.04"/>
+            </geometry>
+            <origin rpy="0 1.570795 0" xyz="0 0 0"/>
+            <material name="red"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.02" radius="0.04"/>
+            </geometry>
+            <origin rpy="0 1.570795 0" xyz="0 0 0"/>
+        </collision>
+        <inertial>
+            <mass value="1"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="1.0"/>
+        </inertial>
+      </link>
+
+      <joint name="finger_joint1" type="prismatic">
+        <parent link="gripper_roll_link"/>
+        <child link="finger_link1"/>
+        <origin xyz="0.0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <limit effort="100" lower="0" upper="0.03" velocity="1.0"/>
+        <safety_controller k_position="20" k_velocity="20" soft_lower_limit="-0.15" soft_upper_limit="0.0"/>
+        <dynamics damping="50" friction="1"/>
+      </joint>
+
+      <link name="finger_link1">
+        <visual>
+            <geometry>
+              <box size="0.08 0.01 0.01"/>
+            </geometry>
+            <origin xyz="0.04 -0.03 0"/>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.08 0.01 0.01"/>
+            </geometry>
+            <origin xyz="0.04 -0.03 0"/>
+        </collision>
+        <inertial>
+            <mass value="1"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="1.0"/>
+        </inertial>
+      </link>
+
+      <joint name="finger_joint2" type="prismatic">
+        <parent link="gripper_roll_link"/>
+        <child link="finger_link2"/>
+        <origin xyz="0.0 0 0"/>
+        <axis xyz="0 1 0"/>
+        <limit effort="1" lower="-0.03" upper="0" velocity="1.0"/>
+        <dynamics damping="50" friction="1"/>
+      </joint>
+
+      <link name="finger_link2">
+        <visual>
+            <geometry>
+              <box size="0.08 0.01 0.01"/>
+            </geometry>
+            <origin xyz="0.04 0.03 0"/>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.08 0.01 0.01"/>
+            </geometry>
+            <origin xyz="0.04 0.03 0"/>
+        </collision>
+        <inertial>
+            <mass value="1"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="1.0"/>
+        </inertial>
+      </link>
 </robot>
