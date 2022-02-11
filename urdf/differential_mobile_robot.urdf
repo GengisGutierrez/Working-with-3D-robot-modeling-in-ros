@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <robot name="differential_robot">
 
+<!-- Differential robot model with trasmission tag to run programs but they aren't functional yet  -->
     <material name="red">
         <color rgba="1 0 0 1"/>
     </material>
